@@ -1,0 +1,37 @@
+server:
+  port: 800
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #基本属性
+    url: jdbc:mysql://localhost:3306/demo_data_statistic?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: root_pwd
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 20
+      idle-timeout: 30000
+      pool-name: dataHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    wait-for-jobs-to-complete-on-shutdown: true
+    scheduler-name: demo-data-statistic
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceId: AUTO
+            instanceIdGenerator: org.quartz.simpl.SimpleInstanceIdGenerator
+            skipUpdateCheck: true
+            batchTriggerAcquisitionMaxCount: 5
+          jobStore:
+            isClustered: true
+            misfireThreshold: 20000
+          threadPool:
+            threadCount: 5
+    auto-startup: true

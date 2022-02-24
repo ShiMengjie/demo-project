@@ -1,34 +1,34 @@
-package com.example.demo.data.statistic.domain.strategy.entity;
+package com.example.demo.data.statistic.domain.data.service;
 
+import com.example.demo.data.statistic.domain.data.entity.valueobject.DataTypeEnum;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
 public class StrategyHolder implements InitializingBean, ApplicationContextAware {
 
-    private final Map<String, Strategy> STRATEGY_MAP = new HashMap<>(10);
+    private final Map<DataTypeEnum, Strategy> STRATEGY_MAP = new HashMap<>(10);
 
     private ApplicationContext applicationContext;
 
     /**
-     * 返回 strategy 列表
+     * 返回 strategy
      */
-    public Collection<Strategy> values() {
-        return this.STRATEGY_MAP.values();
+    public Strategy getStrategy(DataTypeEnum typeEnum) {
+        return this.STRATEGY_MAP.get(typeEnum);
     }
 
     @Override
     public void afterPropertiesSet() {
         applicationContext.getBeansOfType(Strategy.class)
                 .values()
-                .forEach(strategy -> STRATEGY_MAP.put(strategy.getType(), strategy));
+                .forEach(strategy -> STRATEGY_MAP.put(strategy.getId(), strategy));
     }
 
     @Override

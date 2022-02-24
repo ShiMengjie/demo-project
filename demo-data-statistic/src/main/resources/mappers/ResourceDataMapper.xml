@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.data.statistic.dao.mapper.ResourceDataMapper">
+
+    <insert id="insertList" parameterType="java.util.List">
+        INSERT INTO resource_data(begin_date, end_date, resource_type, data_type, value, created_at)
+        VALUES
+        <foreach collection="dataList" item="item" index="index" separator=",">
+            (#{item.beginDate},#{item.endDate},#{item.resourceType},#{item.dataType},#{item.value},#{item.createdAt})
+        </foreach>
+    </insert>
+
+</mapper>

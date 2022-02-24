@@ -8,5 +8,4 @@ public enum TimeFilterEnum {
     WEEK,
     MONTH,
     YEAR;
-
 }

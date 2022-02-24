@@ -35,7 +35,7 @@ public class WeekFilter implements TimeFilter {
      * 结束时间，本周一
      */
     @Override
-    public LocalDateTime calEndDate() {
+    public LocalDateTime getEndDate() {
         return LocalDate.now().with(DayOfWeek.MONDAY).atStartOfDay();
     }
 

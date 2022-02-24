@@ -34,7 +34,7 @@ public class YearFilter implements TimeFilter {
      * 结束时间，今年1月1日
      */
     @Override
-    public LocalDateTime calEndDate() {
+    public LocalDateTime getEndDate() {
         return LocalDate.now().withDayOfYear(1).atStartOfDay();
     }
 

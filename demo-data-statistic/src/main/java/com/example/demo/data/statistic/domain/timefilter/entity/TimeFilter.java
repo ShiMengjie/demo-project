@@ -35,9 +35,16 @@ public interface TimeFilter {
     LocalDateTime calLastDate(LocalDateTime curDate);
 
     /**
-     * 计算当前计算的结束时间
+     * 返回计算的结束时间
      *
      * @return LocalDateTime
      */
-    LocalDateTime calEndDate();
+    LocalDateTime getEndDate();
+
+    /**
+     * 返回计算的开始时间
+     *
+     * @return LocalDateTime
+     */
+    LocalDateTime getStartDate();
 }

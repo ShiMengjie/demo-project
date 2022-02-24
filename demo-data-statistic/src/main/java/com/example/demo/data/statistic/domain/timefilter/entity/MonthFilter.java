@@ -35,7 +35,7 @@ public class MonthFilter implements TimeFilter {
      * 结束时间，当月1号零点
      */
     @Override
-    public LocalDateTime calEndDate() {
+    public LocalDateTime getEndDate() {
         return YearMonth.now().atDay(1).atStartOfDay();
     }
 

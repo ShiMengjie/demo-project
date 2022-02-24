@@ -34,8 +34,13 @@ public class DayFilter implements TimeFilter {
      * 结束时间，当天零点
      */
     @Override
-    public LocalDateTime calEndDate() {
+    public LocalDateTime getEndDate() {
         return LocalDate.now().atStartOfDay();
+    }
+
+    @Override
+    public LocalDateTime getStartDate() {
+        return LocalDate.now().minusDays(1).atStartOfDay();
     }
 
     /**

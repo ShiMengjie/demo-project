@@ -39,7 +39,7 @@ public class DayFilter implements TimeFilter {
     }
 
     @Override
-    public LocalDateTime getStartDate() {
+    public LocalDateTime getBeginDate() {
         return LocalDate.now().minusDays(1).atStartOfDay();
     }
 

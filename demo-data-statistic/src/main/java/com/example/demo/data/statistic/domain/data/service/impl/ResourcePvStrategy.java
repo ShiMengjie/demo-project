@@ -1,7 +1,7 @@
 package com.example.demo.data.statistic.domain.data.service.impl;
 
-import com.example.demo.data.statistic.domain.data.entity.ResourceData;
 import com.example.demo.data.statistic.domain.data.entity.DataOption;
+import com.example.demo.data.statistic.domain.data.entity.ResourceData;
 import com.example.demo.data.statistic.domain.data.entity.valueobject.DataTypeEnum;
 import com.example.demo.data.statistic.domain.data.repository.DataRepository;
 import com.example.demo.data.statistic.domain.data.service.Strategy;
@@ -13,6 +13,7 @@ import com.google.common.collect.Sets;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -51,10 +52,23 @@ public class ResourcePvStrategy implements Strategy {
 
         List<ResourceData> dataList = new ArrayList<>(resourceTypes.length);
         for (String resourceType : resourceTypes) {
-            int count = metaDataRepository.countResourcePV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(),
-                    timeFilter.getStartDate(), timeFilter.getEndDate());
-            dataList.add(new ResourceData(timeFilter.getStartDate(), timeFilter.getEndDate(), resourceType,
-                    this.getId().getValue(), count));
+            // 开始时间、结束时间
+            LocalDateTime beginDate = dataRepository.findResourceBeginDate(resourceType,
+                    this.getId().getValue(), timeFilter.getID().getValue());
+            if (beginDate == null) {
+                beginDate = timeFilter.getBeginDate();
+            }
+            LocalDateTime endDate = timeFilter.getEndDate();
+            // 计算这段时间内的数据
+            while (beginDate.isBefore(endDate)) {
+                int count = metaDataRepository.countResourcePV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(),
+                        beginDate, timeFilter.calNextDate(beginDate));
+
+                dataList.add(new ResourceData(timeFilter.getBeginDate(), timeFilter.getEndDate(), timeFilter.getID().getValue(),
+                        resourceType, this.getId().getValue(), count));
+
+                beginDate = timeFilter.calNextDate(beginDate);
+            }
         }
         // 保存数据
         dataRepository.saveResourceData(dataList);

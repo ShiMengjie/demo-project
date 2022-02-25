@@ -1,12 +1,12 @@
 package com.example.demo.data.statistic.domain.data.entity;
 
 
-import com.example.demo.data.statistic.domain.data.entity.valueobject.DataTypeEnum;
-
 import java.time.LocalDateTime;
 
 /**
  * 资源统计数据
+ *
+ * @author xxx
  */
 public class ResourceData {
 
@@ -23,12 +23,20 @@ public class ResourceData {
      * 资源类型
      */
     private String resourceType;
+
+    /**
+     * 时间类型
+     *
+     * @see com.example.demo.data.statistic.domain.timefilter.entity.valueobject.TimeFilterEnum
+     */
+    private String timeType;
     /**
      * 数据指标类型
      *
-     * @see DataTypeEnum
+     * @see com.example.demo.data.statistic.domain.data.entity.valueobject.DataTypeEnum
      */
     private String dataType;
+
     /**
      * 统计数值
      */
@@ -40,11 +48,12 @@ public class ResourceData {
         this.createdAt = LocalDateTime.now();
     }
 
-    public ResourceData(LocalDateTime beginDate, LocalDateTime endDate,
+    public ResourceData(LocalDateTime beginDate, LocalDateTime endDate, String timeType,
                         String resourceType, String dataType, int value) {
         this();
         this.beginDate = beginDate;
         this.endDate = endDate;
+        this.timeType = timeType;
         this.resourceType = resourceType;
         this.dataType = dataType;
         this.value = value;

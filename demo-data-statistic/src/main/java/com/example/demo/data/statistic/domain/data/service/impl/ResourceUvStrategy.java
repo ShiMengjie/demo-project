@@ -49,8 +49,8 @@ public class ResourceUvStrategy implements Strategy {
         List<ResourceData> dataList = new ArrayList<>(resourceTypes.length);
         for (String resourceType : resourceTypes) {
             int count = metaDataRepository.countResourceUV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(),
-                    timeFilter.getStartDate(), timeFilter.getEndDate());
-            dataList.add(new ResourceData(timeFilter.getStartDate(), timeFilter.getEndDate(), resourceType,
+                    timeFilter.getBeginDate(), timeFilter.getEndDate());
+            dataList.add(new ResourceData(timeFilter.getBeginDate(), timeFilter.getEndDate(), resourceType,
                     this.getId().getValue(), count));
         }
         // 保存数据

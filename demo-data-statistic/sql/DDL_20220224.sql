@@ -29,12 +29,14 @@ CREATE TABLE `resource_data`
     `begin_date`    datetime  NOT NULL COMMENT '统计开始时间',
     `end_date`      datetime  NOT NULL COMMENT '统计结束时间',
     `resource_type` varchar(50)        DEFAULT NULL COMMENT '资源类型',
+    `time_type`     varchar(20)        DEFAULT NULL COMMENT '时间类型',
     `data_type`     varchar(20)        DEFAULT NULL COMMENT '数据指标类型',
     `value`         int(11)            DEFAULT NULL COMMENT '统计数值',
     `created_at`    timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     KEY `idx_resource_type` (`resource_type`),
     KEY `idx_data_type` (`data_type`),
+    KEY `idx_time_type` (`time_type`),
     KEY `idx_begin_date` (`begin_date`),
     KEY `idx_end_date` (`end_date`)
 ) ENGINE = InnoDB

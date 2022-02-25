@@ -46,5 +46,5 @@ public interface TimeFilter {
      *
      * @return LocalDateTime
      */
-    LocalDateTime getStartDate();
+    LocalDateTime getBeginDate();
 }

@@ -1,4 +1,4 @@
-package com.example.demo.data.statistic.util;
+package com.example.demo.data.statistic.utils;
 
 import java.util.*;
 

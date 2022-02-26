@@ -1,6 +1,6 @@
 package com.example.demo.data.statistic.dao.mapper;
 
-import com.example.demo.data.statistic.domain.data.entity.ResourceData;
+import com.example.demo.data.statistic.po.ResourceData;
 import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDateTime;

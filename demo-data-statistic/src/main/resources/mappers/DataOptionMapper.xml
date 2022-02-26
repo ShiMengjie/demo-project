@@ -3,7 +3,7 @@
 <mapper namespace="com.example.demo.data.statistic.dao.mapper.DataOptionMapper">
 
     <select id="selectOneByKey"
-            resultType="com.example.demo.data.statistic.domain.data.entity.DataOption">
+            resultType="com.example.demo.data.statistic.po.DataOption">
         SELECT *
         FROM data_option
         WHERE `key` = #{key};

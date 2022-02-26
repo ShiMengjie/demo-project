@@ -43,8 +43,6 @@ CREATE TABLE `resource_data`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_bin COMMENT ='资源统计数据表';
 
-
-
 CREATE TABLE `strategy_option`
 (
     `id`         int(11)   NOT NULL AUTO_INCREMENT COMMENT '主键',

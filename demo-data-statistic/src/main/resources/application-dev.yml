@@ -15,23 +15,12 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-  quartz:
-    job-store-type: jdbc
-    jdbc:
-      initialize-schema: never
-    wait-for-jobs-to-complete-on-shutdown: true
-    scheduler-name: demo-data-statistic
-    properties:
-      org:
-        quartz:
-          scheduler:
-            instanceId: AUTO
-            instanceIdGenerator: org.quartz.simpl.SimpleInstanceIdGenerator
-            skipUpdateCheck: true
-            batchTriggerAcquisitionMaxCount: 5
-          jobStore:
-            isClustered: true
-            misfireThreshold: 20000
-          threadPool:
-            threadCount: 5
-    auto-startup: true
+    quartz:
+      job-store-type: jdbc
+      jdbc:
+        initialize-schema: never
+      wait-for-jobs-to-complete-on-shutdown: true
+      scheduler-name: demo-data-statistic
+      properties:
+        org.quartz.threadPool.threadCount: 20
+      auto-startup: true

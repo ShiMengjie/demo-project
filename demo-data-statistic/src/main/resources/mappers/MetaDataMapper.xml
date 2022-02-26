@@ -2,4 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.data.statistic.dao.mapper.MetaDataMapper">
 
+    <select id="countResourcePV" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM meta_data
+        WHERE resource_type = #{resourceType}
+          AND operate_type = #{operate}
+        <![CDATA[ AND operate_at >= #{beginDate} ]]>
+        <![CDATA[ AND operate_at < #{endDate} ]]>;
+    </select>
+
+    <select id="countResourceUV" resultType="java.lang.Integer">
+        SELECT COUNT(DISTINCT resource_id)
+        FROM meta_data
+        WHERE resource_type = #{resourceType}
+          AND operate_type = #{operate}
+        <![CDATA[ AND operate_at >= #{beginDate} ]]>
+        <![CDATA[ AND operate_at < #{endDate} ]]>;
+    </select>
 </mapper>

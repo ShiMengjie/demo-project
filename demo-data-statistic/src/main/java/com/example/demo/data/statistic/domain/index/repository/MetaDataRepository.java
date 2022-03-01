@@ -1,4 +1,4 @@
-package com.example.demo.data.statistic.domain.statistic.repository;
+package com.example.demo.data.statistic.domain.index.repository;
 
 import java.time.LocalDateTime;
 

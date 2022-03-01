@@ -1,8 +1,8 @@
 package com.example.demo.data.statistic.dao.repository;
 
 import com.example.demo.data.statistic.dao.mapper.MetaDataMapper;
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.OperateEnum;
-import com.example.demo.data.statistic.domain.statistic.repository.MetaDataRepository;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.OperateEnum;
+import com.example.demo.data.statistic.domain.index.repository.MetaDataRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,12 +15,12 @@ public class JdbcMetaDataRepository implements MetaDataRepository {
     private MetaDataMapper metaDataMapper;
 
     @Override
-    public int countResourcePV(String resourceType, LocalDateTime startDate, LocalDateTime endDate) {
-        return metaDataMapper.countResourcePV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(), startDate, endDate);
+    public int countResourcePV(String resourceType, LocalDateTime beginDate, LocalDateTime endDate) {
+        return metaDataMapper.countResourcePV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(), beginDate, endDate);
     }
 
     @Override
-    public int countResourceUV(String resourceType, LocalDateTime startDate, LocalDateTime endDate) {
-        return metaDataMapper.countResourceUV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(), startDate, endDate);
+    public int countResourceUV(String resourceType, LocalDateTime beginDate, LocalDateTime endDate) {
+        return metaDataMapper.countResourceUV(resourceType, OperateEnum.VIEW_RESOURCE.getValue(), beginDate, endDate);
     }
 }

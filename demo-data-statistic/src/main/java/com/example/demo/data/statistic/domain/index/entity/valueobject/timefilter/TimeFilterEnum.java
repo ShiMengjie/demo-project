@@ -1,4 +1,4 @@
-package com.example.demo.data.statistic.domain.statistic.entity.valueobject.timefilter;
+package com.example.demo.data.statistic.domain.index.entity.valueobject.timefilter;
 
 /**
  * timeFilter 的枚举

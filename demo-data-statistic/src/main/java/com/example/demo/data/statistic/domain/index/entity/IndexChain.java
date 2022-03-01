@@ -1,10 +1,10 @@
-package com.example.demo.data.statistic.domain.statistic.entity;
+package com.example.demo.data.statistic.domain.index.entity;
 
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.strategy.Strategy;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.IndexStrategy;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Satistic {
+public class IndexChain {
 
     /**
      * The int which gives the current number of filters in the chain.
@@ -14,7 +14,7 @@ public class Satistic {
     /**
      * Strategy
      */
-    Strategy[] strategies = new Strategy[10];
+    IndexStrategy[] strategies = new IndexStrategy[10];
 
     /**
      * the current position in the filter chain.
@@ -26,8 +26,8 @@ public class Satistic {
      */
     int INCREMENT = 10;
 
-    public void addStrategy(Strategy other) {
-        for (Strategy strategy : this.strategies) {
+    public void addStrategy(IndexStrategy other) {
+        for (IndexStrategy strategy : this.strategies) {
             if(strategy != null && strategy.isEqual(other)) {
                 if (strategy.isEqual(other)) {
                     return;
@@ -37,7 +37,7 @@ public class Satistic {
 
         // 如果已经满了，就扩容
         if (this.size == this.strategies.length) {
-            Strategy[] newHandlers = new Strategy[this.size + this.INCREMENT];
+            IndexStrategy[] newHandlers = new IndexStrategy[this.size + this.INCREMENT];
 
             System.arraycopy(this.strategies, 0, newHandlers, 0, this.size);
             this.strategies = newHandlers;
@@ -48,7 +48,7 @@ public class Satistic {
     public void doStatistic() {
         // Call the next filter if there is one
         if (this.pos < this.size) {
-            Strategy strategy = this.strategies[this.pos++];
+            IndexStrategy strategy = this.strategies[this.pos++];
             try {
                 strategy.doStatistic(this);
             } catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.example.demo.data.statistic.domain.statistic.entity.valueobject;
+package com.example.demo.data.statistic.domain.index.entity.valueobject;
 
 /**
  * 统计的指标枚举

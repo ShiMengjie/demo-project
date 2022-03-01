@@ -1,9 +1,9 @@
-package com.example.demo.data.statistic.domain.statistic.entity.valueobject.strategy;
+package com.example.demo.data.statistic.domain.index.entity.valueobject.strategy;
 
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.DataTypeEnum;
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.timefilter.*;
-import com.example.demo.data.statistic.domain.statistic.repository.MetaDataRepository;
-import com.example.demo.data.statistic.domain.statistic.repository.StrategyRepository;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.DataTypeEnum;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.timefilter.*;
+import com.example.demo.data.statistic.domain.index.repository.MetaDataRepository;
+import com.example.demo.data.statistic.domain.index.repository.StrategyRepository;
 import com.example.demo.data.statistic.po.DataOption;
 import com.example.demo.data.statistic.po.ResourceData;
 import org.springframework.stereotype.Component;
@@ -13,16 +13,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 资源 PV 统计策略
- **/
 @Component
-public class ResourcePvStrategy extends AbstractStrategy {
+public class ResourceUvStrategy extends AbstractStrategy {
 
     @Resource
     private MetaDataRepository metaDataRepository;
 
-    public ResourcePvStrategy(StrategyRepository strategyRepository) {
+    public ResourceUvStrategy(StrategyRepository strategyRepository) {
         super(strategyRepository);
 
         this.timeFilterList = new ArrayList<>(4);
@@ -34,11 +31,11 @@ public class ResourcePvStrategy extends AbstractStrategy {
 
     @Override
     public DataTypeEnum getId() {
-        return DataTypeEnum.RESOURCE_PV;
+        return DataTypeEnum.RESOURCE_UV;
     }
 
     @Override
-    protected void statisticData(TimeFilter timeFilter) {
+    public void execute(TimeFilter timeFilter) {
         // 从 option 表里查询出，要统计的资源类型
         DataOption option = strategyRepository.findOption(this.getId().getKey());
         String[] resourceTypes = option.doGetStringArr();
@@ -75,5 +72,4 @@ public class ResourcePvStrategy extends AbstractStrategy {
     protected LocalDateTime getEndDate(TimeFilter timeFilter) {
         return timeFilter.getEndDate();
     }
-
 }

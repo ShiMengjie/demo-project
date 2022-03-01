@@ -2,7 +2,7 @@ package com.example.demo.data.statistic.dao.repository;
 
 import com.example.demo.data.statistic.dao.mapper.DataOptionMapper;
 import com.example.demo.data.statistic.dao.mapper.ResourceDataMapper;
-import com.example.demo.data.statistic.domain.statistic.repository.StrategyRepository;
+import com.example.demo.data.statistic.domain.index.repository.StrategyRepository;
 import com.example.demo.data.statistic.po.DataOption;
 import com.example.demo.data.statistic.po.ResourceData;
 import com.example.demo.data.statistic.utils.CollectionUtil;

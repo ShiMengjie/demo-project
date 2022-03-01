@@ -1,7 +1,7 @@
 package com.example.demo.data.statistic.config;
 
-import com.example.demo.data.statistic.domain.statistic.entity.Satistic;
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.strategy.Strategy;
+import com.example.demo.data.statistic.domain.index.entity.IndexChain;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.IndexStrategy;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -20,16 +20,16 @@ public class StrategyConfig implements InitializingBean, ApplicationContextAware
     private ApplicationContext applicationContext;
 
     @Bean
-    public Satistic strategyChain() {
-        return new Satistic();
+    public IndexChain strategyChain() {
+        return new IndexChain();
     }
 
     @Override
     public void afterPropertiesSet() {
         // 把 StatisticHandler 添加进 StatisticHandlerChain 中
-        Satistic chain = applicationContext.getBean(Satistic.class);
+        IndexChain chain = applicationContext.getBean(IndexChain.class);
 
-        Map<String, Strategy> map = applicationContext.getBeansOfType(Strategy.class);
+        Map<String, IndexStrategy> map = applicationContext.getBeansOfType(IndexStrategy.class);
 
         map.values().forEach(chain::addStrategy);
     }

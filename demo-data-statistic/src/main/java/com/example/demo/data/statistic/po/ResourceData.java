@@ -1,8 +1,8 @@
 package com.example.demo.data.statistic.po;
 
 
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.DataTypeEnum;
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.timefilter.TimeFilterEnum;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.DataTypeEnum;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.timefilter.TimeFilterEnum;
 
 import java.time.LocalDateTime;
 

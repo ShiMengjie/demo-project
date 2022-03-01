@@ -3,10 +3,10 @@
 <mapper namespace="com.example.demo.data.statistic.dao.mapper.ResourceDataMapper">
 
     <insert id="insertList" parameterType="java.util.List">
-        INSERT INTO resource_data(begin_date, end_date, resource_type, data_type, value, created_at)
+        INSERT INTO resource_data(begin_date, end_date, resource_type,time_type, data_type, value, created_at)
         VALUES
         <foreach collection="dataList" item="item" index="index" separator=",">
-            (#{item.beginDate},#{item.endDate},#{item.resourceType},#{item.dataType},#{item.value},#{item.createdAt})
+            (#{item.beginDate},#{item.endDate},#{item.resourceType},#{item.timeType},#{item.dataType},#{item.value},#{item.createdAt})
         </foreach>
     </insert>
 

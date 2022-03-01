@@ -1,6 +1,6 @@
 package com.example.demo.data.statistic.job;
 
-import com.example.demo.data.statistic.domain.statistic.entity.Satistic;
+import com.example.demo.data.statistic.domain.index.entity.IndexChain;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class StatisticJob {
 
     @Resource
-    private Satistic strategyChain;
+    private IndexChain strategyChain;
 
     @Scheduled(cron = "0 0 1 * * ?")
     protected void execute() {

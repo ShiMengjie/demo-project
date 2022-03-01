@@ -1,12 +1,12 @@
-package com.example.demo.data.statistic.domain.statistic.entity.valueobject.strategy;
+package com.example.demo.data.statistic.domain.index.entity.valueobject.strategy;
 
-import com.example.demo.data.statistic.domain.statistic.entity.Satistic;
-import com.example.demo.data.statistic.domain.statistic.entity.valueobject.timefilter.TimeFilter;
-import com.example.demo.data.statistic.domain.statistic.repository.StrategyRepository;
+import com.example.demo.data.statistic.domain.index.entity.IndexChain;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.timefilter.TimeFilter;
+import com.example.demo.data.statistic.domain.index.repository.StrategyRepository;
 
 import java.util.List;
 
-public abstract class AbstractStrategy implements Strategy {
+public abstract class AbstractStrategy implements IndexStrategy {
 
     /**
      * 在这些时间点，可以执行统计
@@ -20,19 +20,19 @@ public abstract class AbstractStrategy implements Strategy {
     }
 
     @Override
-    public boolean isEqual(Strategy other) {
+    public boolean isEqual(IndexStrategy other) {
         return this.getId().equals(other.getId());
     }
 
     @Override
-    public void doStatistic(Satistic satistic) {
+    public void doStatistic(IndexChain satistic) {
         for (TimeFilter timeFilter : this.timeFilterList) {
             // 当前时间是否需要进行统计
             if (!timeFilter.canDoStatistic()) {
                 continue;
             }
             // 执行内部统计方法
-            this.statisticData(timeFilter);
+            this.execute(timeFilter);
         }
         // chain 中下一个 handler 的统计
         satistic.doStatistic();
@@ -41,5 +41,5 @@ public abstract class AbstractStrategy implements Strategy {
     /**
      * 真正执行统计的方法
      */
-    protected abstract void statisticData(TimeFilter timeFilter);
+    protected abstract void execute(TimeFilter timeFilter);
 }

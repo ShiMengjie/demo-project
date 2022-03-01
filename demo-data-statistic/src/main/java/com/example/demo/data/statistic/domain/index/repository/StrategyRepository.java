@@ -1,4 +1,4 @@
-package com.example.demo.data.statistic.domain.statistic.repository;
+package com.example.demo.data.statistic.domain.index.repository;
 
 import com.example.demo.data.statistic.po.DataOption;
 import com.example.demo.data.statistic.po.ResourceData;

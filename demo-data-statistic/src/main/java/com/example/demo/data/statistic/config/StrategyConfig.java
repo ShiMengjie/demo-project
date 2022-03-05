@@ -31,7 +31,7 @@ public class StrategyConfig implements InitializingBean, ApplicationContextAware
 
         Map<String, Index> map = applicationContext.getBeansOfType(Index.class);
 
-        map.values().forEach(chain::addStrategy);
+        map.values().forEach(chain::addIndex);
     }
 
     @Override

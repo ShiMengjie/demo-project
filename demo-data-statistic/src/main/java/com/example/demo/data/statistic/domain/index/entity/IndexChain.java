@@ -26,7 +26,7 @@ public class IndexChain {
      */
     int INCREMENT = 10;
 
-    public void addStrategy(Index index) {
+    public void addIndex(Index index) {
         for (Index existed : this.indexArr) {
             if(existed != null && existed.isEqual(index)) {
                 if (existed.isEqual(index)) {

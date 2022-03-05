@@ -25,7 +25,7 @@ public abstract class AbstractIndexStrategy implements IndexStrategy {
     }
 
     @Override
-    public void doStatistic(IndexChain satistic) {
+    public void doStatistic(IndexChain chain) {
         for (TimeFilter timeFilter : this.timeFilterList) {
             // 当前时间是否需要进行统计
             if (!timeFilter.canDoStatistic()) {
@@ -35,7 +35,7 @@ public abstract class AbstractIndexStrategy implements IndexStrategy {
             this.execute(timeFilter);
         }
         // chain 中下一个 handler 的统计
-        satistic.doStatistic();
+        chain.doStatistic();
     }
 
     /**

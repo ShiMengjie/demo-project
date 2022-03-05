@@ -26,10 +26,10 @@ public class IndexChain {
      */
     int INCREMENT = 10;
 
-    public void addStrategy(IndexStrategy other) {
-        for (IndexStrategy strategy : this.strategies) {
-            if(strategy != null && strategy.isEqual(other)) {
-                if (strategy.isEqual(other)) {
+    public void addStrategy(IndexStrategy strategy) {
+        for (IndexStrategy existed : this.strategies) {
+            if(existed != null && existed.isEqual(strategy)) {
+                if (existed.isEqual(strategy)) {
                     return;
                 }
             }
@@ -42,7 +42,7 @@ public class IndexChain {
             System.arraycopy(this.strategies, 0, newHandlers, 0, this.size);
             this.strategies = newHandlers;
         }
-        this.strategies[this.size++] = other;
+        this.strategies[this.size++] = strategy;
     }
 
     public void doStatistic() {

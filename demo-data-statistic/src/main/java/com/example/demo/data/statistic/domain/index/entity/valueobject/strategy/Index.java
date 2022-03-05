@@ -3,7 +3,7 @@ package com.example.demo.data.statistic.domain.index.entity.valueobject.strategy
 import com.example.demo.data.statistic.domain.index.entity.IndexChain;
 import com.example.demo.data.statistic.domain.index.entity.valueobject.DataTypeEnum;
 
-public interface IndexStrategy {
+public interface Index {
 
     /**
      * 返回类型
@@ -15,11 +15,11 @@ public interface IndexStrategy {
     /**
      * 比较是否相同
      */
-    boolean isEqual(IndexStrategy other);
+    boolean isEqual(Index other);
 
     /**
      * 执行统计
      */
-    void doStatistic(IndexChain satistic);
+    void doStatistic(IndexChain chain);
 
 }

@@ -1,7 +1,7 @@
 package com.example.demo.data.statistic.config;
 
 import com.example.demo.data.statistic.domain.index.entity.IndexChain;
-import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.IndexStrategy;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.Index;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -29,7 +29,7 @@ public class StrategyConfig implements InitializingBean, ApplicationContextAware
         // 把 StatisticHandler 添加进 StatisticHandlerChain 中
         IndexChain chain = applicationContext.getBean(IndexChain.class);
 
-        Map<String, IndexStrategy> map = applicationContext.getBeansOfType(IndexStrategy.class);
+        Map<String, Index> map = applicationContext.getBeansOfType(Index.class);
 
         map.values().forEach(chain::addStrategy);
     }

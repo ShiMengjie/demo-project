@@ -6,7 +6,7 @@ import com.example.demo.data.statistic.domain.index.repository.StrategyRepositor
 
 import java.util.List;
 
-public abstract class AbstractIndexStrategy implements IndexStrategy {
+public abstract class AbstractIndexStrategy implements Index {
 
     /**
      * 在这些时间点，可以执行统计
@@ -20,7 +20,7 @@ public abstract class AbstractIndexStrategy implements IndexStrategy {
     }
 
     @Override
-    public boolean isEqual(IndexStrategy other) {
+    public boolean isEqual(Index other) {
         return this.getId().equals(other.getId());
     }
 

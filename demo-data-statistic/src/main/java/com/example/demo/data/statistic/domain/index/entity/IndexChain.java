@@ -1,6 +1,6 @@
 package com.example.demo.data.statistic.domain.index.entity;
 
-import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.IndexStrategy;
+import com.example.demo.data.statistic.domain.index.entity.valueobject.strategy.Index;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -14,7 +14,7 @@ public class IndexChain {
     /**
      * Strategy
      */
-    IndexStrategy[] strategies = new IndexStrategy[10];
+    Index[] indexArr = new Index[10];
 
     /**
      * the current position in the filter chain.
@@ -26,31 +26,31 @@ public class IndexChain {
      */
     int INCREMENT = 10;
 
-    public void addStrategy(IndexStrategy strategy) {
-        for (IndexStrategy existed : this.strategies) {
-            if(existed != null && existed.isEqual(strategy)) {
-                if (existed.isEqual(strategy)) {
+    public void addStrategy(Index index) {
+        for (Index existed : this.indexArr) {
+            if(existed != null && existed.isEqual(index)) {
+                if (existed.isEqual(index)) {
                     return;
                 }
             }
         }
 
         // 如果已经满了，就扩容
-        if (this.size == this.strategies.length) {
-            IndexStrategy[] newHandlers = new IndexStrategy[this.size + this.INCREMENT];
+        if (this.size == this.indexArr.length) {
+            Index[] newIndexArr = new Index[this.size + this.INCREMENT];
 
-            System.arraycopy(this.strategies, 0, newHandlers, 0, this.size);
-            this.strategies = newHandlers;
+            System.arraycopy(this.indexArr, 0, newIndexArr, 0, this.size);
+            this.indexArr = newIndexArr;
         }
-        this.strategies[this.size++] = strategy;
+        this.indexArr[this.size++] = index;
     }
 
     public void doStatistic() {
         // Call the next filter if there is one
         if (this.pos < this.size) {
-            IndexStrategy strategy = this.strategies[this.pos++];
+            Index index = this.indexArr[this.pos++];
             try {
-                strategy.doStatistic(this);
+                index.doStatistic(this);
             } catch (Exception e) {
                 log.error("[StrategyChain] do statistic failed, cause error:", e);
             }

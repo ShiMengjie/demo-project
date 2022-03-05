@@ -17,7 +17,7 @@ import java.util.List;
  * 资源 PV 统计策略
  **/
 @Component
-public class ResourcePvStrategy extends AbstractStrategy {
+public class ResourcePvStrategy extends AbstractIndexStrategy {
 
     @Resource
     private MetaDataRepository metaDataRepository;

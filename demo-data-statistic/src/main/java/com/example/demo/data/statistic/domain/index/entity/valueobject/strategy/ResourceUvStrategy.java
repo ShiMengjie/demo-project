@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ResourceUvStrategy extends AbstractStrategy {
+public class ResourceUvStrategy extends AbstractIndexStrategy {
 
     @Resource
     private MetaDataRepository metaDataRepository;

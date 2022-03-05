@@ -6,7 +6,7 @@ import com.example.demo.data.statistic.domain.index.repository.StrategyRepositor
 
 import java.util.List;
 
-public abstract class AbstractStrategy implements IndexStrategy {
+public abstract class AbstractIndexStrategy implements IndexStrategy {
 
     /**
      * 在这些时间点，可以执行统计
@@ -15,7 +15,7 @@ public abstract class AbstractStrategy implements IndexStrategy {
 
     protected StrategyRepository strategyRepository;
 
-    public AbstractStrategy(StrategyRepository strategyRepository) {
+    public AbstractIndexStrategy(StrategyRepository strategyRepository) {
         this.strategyRepository = strategyRepository;
     }
 
